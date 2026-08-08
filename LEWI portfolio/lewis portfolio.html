@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lewis Gichuhi Maina Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a2a3a 50%, #0d1b2a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e0e8f0;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(26, 70, 113, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(143, 209, 29, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(16, 159, 215, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: #109fd7;
+            top: -100px;
+            right: -100px;
+            animation: floatOrb 20s infinite alternate;
+        }
+
+        .glow-orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: #8fd11d;
+            bottom: -150px;
+            left: -150px;
+            animation: floatOrb 25s infinite alternate-reverse;
+        }
+
+        .glow-orb:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background: #1a4671;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseOrb 15s infinite alternate;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 50px) scale(1.2); }
+        }
+
+        @keyframes pulseOrb {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.4; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: rgba(26, 70, 113, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 159, 215, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(143, 209, 29, 0.1), transparent, rgba(16, 159, 215, 0.1), transparent);
+            animation: rotateGradient 20s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #8fd11d, #109fd7, #1a4671);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmerText 5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 4px;
+            text-shadow: none;
+        }
+
+        @keyframes shimmerText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        header::after {
+            content: '< />';
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            font-family: 'Orbitron', sans-serif;
+            color: rgba(143, 209, 29, 0.15);
+            font-size: 4rem;
+            font-weight: 900;
+            z-index: 0;
+        }
+
+        .glitch-text {
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            background: rgba(26, 70, 113, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            border: 1px solid rgba(143, 209, 29, 0.15);
+        }
+
+        nav a {
+            padding: 12px 30px;
+            background: rgba(26, 70, 113, 0.3);
+            color: #e0e8f0;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(16, 159, 215, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(143, 209, 29, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, #1a4671, #109fd7);
+            border-color: #8fd11d;
+            box-shadow: 0 10px 30px rgba(16, 159, 215, 0.3);
+        }
+
+        .profile-card {
+            background: rgba(26, 70, 113, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 159, 215, 0.15);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(143, 209, 29, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            padding: 3px;
+            background: conic-gradient(from 0deg, #8fd11d, #109fd7, #1a4671, #8fd11d);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: spinBorder 4s linear infinite;
+        }
+
+        @keyframes spinBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-image-wrapper img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(16, 159, 215, 0.3);
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-info a, .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: rgba(16, 159, 215, 0.05);
+            border-radius: 12px;
+            color: #b0c8d8;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(16, 159, 215, 0.05);
+        }
+
+        .contact-info a:hover {
+            background: rgba(16, 159, 215, 0.15);
+            border-color: rgba(143, 209, 29, 0.3);
+            transform: translateX(8px);
+            color: #fff;
+        }
+
+        .contact-info a::before {
+            content: '▸';
+            color: #8fd11d;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover::before {
+            opacity: 1;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8fd11d, #109fd7, transparent);
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #8fd11d, #109fd7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 20px auto 40px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #b0c8d8;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .about-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(143, 209, 29, 0.1);
+            position: absolute;
+            left: -10px;
+            top: -20px;
+            font-family: Georgia, serif;
+        }
+
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: rgba(26, 70, 113, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 159, 215, 0.1);
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(143, 209, 29, 0.05), rgba(16, 159, 215, 0.05));
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(143, 209, 29, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .card img {
+            border-radius: 16px;
+            margin-bottom: 15px;
+            transition: transform 0.5s;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #d0dce8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card .icon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(143, 209, 29, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #8fd11d;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid rgba(143, 209, 29, 0.2);
+        }
+
+        .project-block {
+            background: rgba(26, 70, 113, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(16, 159, 215, 0.12);
+            border-radius: 30px;
+            padding: 35px;
+            margin: 30px 0;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        .project-block:hover {
+            border-color: rgba(143, 209, 29, 0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            transform: translateY(-5px);
+        }
+
+        .project-block h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #8fd11d;
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .project-block ul li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            color: #b0c8d8;
+        }
+
+        .project-block ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #109fd7;
+        }
+
+        .preview-box {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(16, 159, 215, 0.15);
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s;
+        }
+
+        .preview-box:hover {
+            border-color: #8fd11d;
+            box-shadow: 0 15px 40px rgba(16, 159, 215, 0.2);
+        }
+
+        .preview-frame {
+            width: 100%;
+            height: 300px;
+            border: none;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, #1a4671, #109fd7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(143, 209, 29, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(143, 209, 29, 0.1), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(16, 159, 215, 0.4);
+            border-color: #8fd11d;
+        }
+
+        .btn-sm {
+            padding: 10px 25px;
+            font-size: 0.85rem;
+        }
+
+        .caution-box {
+            background: rgba(139, 0, 0, 0.15);
+            border-left: 4px solid #ff6b6b;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            color: #ffcccc;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .caution-box::before {
+            content: '⚠ ';
+            color: #ff6b6b;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .edu-card {
+            background: rgba(26, 70, 113, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 159, 215, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(143, 209, 29, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .edu-card img {
+            border-radius: 16px;
+            margin-bottom: 15px;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .edu-card p {
+            margin: 8px 0;
+            color: #b0c8d8;
+        }
+
+        .edu-card p:first-of-type {
+            font-weight: 700;
+            color: #8fd11d;
+            font-size: 1.1rem;
+        }
+
+        .edu-card .year-tag {
+            display: inline-block;
+            background: rgba(16, 159, 215, 0.15);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #109fd7;
+            border: 1px solid rgba(16, 159, 215, 0.1);
+        }
+
+        .referees-gal {
+            background: rgba(26, 70, 113, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 159, 215, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .referees-gal:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(143, 209, 29, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .referees-gal img {
+            border-radius: 50%;
+            margin-bottom: 15px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .referees-gal p {
+            margin: 8px 0;
+            color: #b0c8d8;
+        }
+
+        .referees-gal p:first-of-type {
+            font-weight: 700;
+            color: #8fd11d;
+            font-size: 1.1rem;
+        }
+
+        .referees-gal .year-tag {
+            display: inline-block;
+            background: rgba(16, 159, 215, 0.15);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #109fd7;
+            border: 1px solid rgba(16, 159, 215, 0.1);
+        }
+
+        footer {
+            background: rgba(26, 70, 113, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 159, 215, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(143, 209, 29, 0.03), transparent);
+            animation: shimmerFooter 8s infinite;
+        }
+
+        @keyframes shimmerFooter {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        footer p {
+            color: #8098a8;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p span {
+            color: #8fd11d;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(16, 159, 215, 0.1);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #109fd7;
+            border: 1px solid rgba(16, 159, 215, 0.1);
+            margin: 3px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+            
+            .contact-info a, .contact-info p {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                border-radius: 20px;
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                flex: 1;
+                min-width: 80px;
+                text-align: center;
+            }
+            
+            .preview-frame {
+                height: 200px;
+            }
+            
+            .project-block {
+                padding: 20px;
+            }
+
+            .referees-gal img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .profile-image-wrapper img {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .grid-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .referees-gal img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-orb"></div>
+    <div class="glow-orb"></div>
+    <div class="glow-orb"></div>
+
+    <div class="container">
+        <header>
+            <h1>Lewis Gichuhi Maina</h1>
+        </header>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+        </nav>
+
+        <div class="profile-card" id="about">
+            <div class="profile-image-wrapper">
+                <img src="lewis gich.jpg" alt="Lewis Gichuhi Maina">
+            </div>
+            <div class="contact-info">
+                <a href="mailto:lewigich43@gmail.com">✉ lewigich43@gmail.com</a>
+                <p>📱 0796587763</p>
+                <a href="https://github.com/lewisGichuhi" target="_blank">⌨ github.com/lewisGichuhi</a>
+                <a href="https://www.linkedin.com/in/lewis-maina-763661359/" target="_blank">🔗 linkedin.com/in/lewis-maina</a>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <h2 class="section-title"><span>About Me</span></h2>
+            <div class="about-text">
+                Hello, I am Lewis Gichuhi Maina. A Computer Science diploma holder from NIBS Technical College with a passion for building robust digital solutions. I specialize in full-stack development, database architecture, API integration, and network automation. I've designed multi-tenant POS systems, e-commerce platforms, and real-time ledger applications. My approach combines technical precision with creative problem-solving to deliver impactful, scalable solutions.
+                <div style="margin-top: 20px;">
+                    <span class="tech-tag">Full-Stack</span>
+                    <span class="tech-tag">Database Design</span>
+                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">Network Automation</span>
+                    <span class="tech-tag">UI/UX</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="skills"><span>Skills</span></h2>
+        <div class="grid-gallery">
+            <div class="card">
+                <span class="icon-badge">⚡</span>
+                <img src="web dev.jpg" alt="Web Development">
+                <p>Web Development</p>
+                <div style="margin-top: 10px; font-size: 0.8rem; color: #8098a8;">React · Node · PHP</div>
+            </div>
+            <div class="card">
+                <span class="icon-badge">🗄</span>
+                <img src="database lewi.jpg" alt="Database">
+                <p>Database Architecture</p>
+                <div style="margin-top: 10px; font-size: 0.8rem; color: #8098a8;">MySQL · PostgreSQL · MongoDB</div>
+            </div>
+            <div class="card">
+                <span class="icon-badge">🌐</span>
+                <img src="networking.jpg" alt="Networking">
+                <p>Networking</p>
+                <div style="margin-top: 10px; font-size: 0.8rem; color: #8098a8;">TCP/IP · DNS · Firewalls</div>
+            </div>
+            <div class="card">
+                <span class="icon-badge">🎨</span>
+                <img src="graphic desighn.jpg" alt="Graphical Design">
+                <p>Graphical Design</p>
+                <div style="margin-top: 10px; font-size: 0.8rem; color: #8098a8;">Figma · Photoshop · Illustrator</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="projects"><span>Projects</span></h2>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="color: #b0c8d8; font-size: 1.1rem;">Building solutions that bridge technology with real-world needs</p>
+        </div>
+
+        <div class="project-block">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                <img src="lory1.jpg" alt="Wonder Price Logistics" style="width: 200px; height: 160px; object-fit: cover; border-radius: 16px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <h3>Wonder Price Logistics</h3>
+                    <p style="color: #b0c8d8;">A recovery truck booking system designed for my uncle's logistics business.</p>
+                    <a href="https://126123.oneapp.dev" class="btn btn-sm" target="_blank">🚀 Live Demo</a>
+                </div>
+            </div>
+            <h3 style="margin-top: 20px;">How It Works</h3>
+            <ul>
+                <li>User logs in to the platform</li>
+                <li>Submits vehicle and contact details</li>
+                <li>Request is instantly routed to available tow trucks via email</li>
+            </ul>
+        </div>
+
+        <div class="project-block">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                <img src="Gemini_Generated_Image_4z2x284z2x284z2x.png" alt="GICH WiFi Billing" style="width: 200px; height: 160px; object-fit: cover; border-radius: 16px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <h3>GICH WiFi Billing System</h3>
+                    <p style="color: #b0c8d8;">Automated WiFi payment and access management system for a friend's hotspot business.</p>
+                    <a href="https://github.com/lewisGichuhi/wifi-billing-system" class="btn btn-sm" target="_blank">📂 GitHub</a>
+                </div>
+            </div>
+            <h3 style="margin-top: 20px;">How It Works</h3>
+            <ul>
+                <li>User connects to WiFi and is redirected to payment portal</li>
+                <li>Selects a plan and enters M-Pesa number for payment</li>
+                <li>Instant access granted upon payment confirmation</li>
+            </ul>
+            <div class="caution-box">Both projects are secured and locked for demonstration purposes</div>
+        </div>
+
+        <div class="project-block">
+            <h3>Apartment Management System</h3>
+            <p style="color: #b0c8d8;">A comprehensive solution for my father to manage rental properties efficiently.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div>
+                    <div class="preview-box">
+                        <iframe src="https://apartment-maina.netlify.app/" class="preview-frame"></iframe>
+                    </div>
+                    <a href="https://apartment-maina.netlify.app/" class="btn btn-sm" target="_blank">👑 Admin Panel</a>
+                </div>
+                <div>
+                    <div class="preview-box">
+                        <iframe src="https://rent-payment-portal.netlify.app/" class="preview-frame"></iframe>
+                    </div>
+                    <a href="https://rent-payment-portal.netlify.app/" class="btn btn-sm" target="_blank">👤 Tenant Portal</a>
+                </div>
+            </div>
+
+            <h3>How It Works</h3>
+            <ul>
+                <li>Tenant makes rent payment via the portal</li>
+                <li>Admin logs in to confirm and update balances</li>
+                <li>Payment automatically deducted from tenant's balance in database</li>
+                <li>Tenant can view real-time balance and payment history</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" id="education"><span>Education & Qualifications</span></h2>
+        <div class="education-grid">
+            <div class="edu-card">
+                <img src="nibs logo.jpg" alt="NIBS Technical College">
+                <p>Diploma in Computer Science Level 6</p>
+                <p>NIBS Technical College · Ruiru Campus</p>
+                <span class="year-tag">2024 - 2026</span>
+            </div>
+            <div class="edu-card">
+                <img src="gg rumuruti.png" alt="GG Rumuruti Boys High School">
+                <p>KCSE Certificate</p>
+                <p>GG Rumuruti Boys High School</p>
+                <span class="year-tag">2020 - 2023</span>
+            </div>
+            <div class="edu-card">
+                <img src="snowview.webp" alt="Snowview Complex Primary School">
+                <p>KCPE Certificate</p>
+                <p>Snowview Complex Primary School</p>
+                <span class="year-tag">2010 - 2020</span>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="referees"><span>Referees</span></h2>
+        <div class="referees-gal">
+            <img src="mr Patrick" alt="Mr. Patrick">
+            <p>Lecturer, NIBS Technical College</p>
+            <p>computer science department</p>
+        </div>
+        <div class="referees-gal">
+            <img src="fridah.png" alt="Fridah">
+            <p>ICT Technician & web designer</p>
+        </div>
+
+        <footer>
+            <p>© <span>2026</span> Lewis Gichuhi Maina · Crafted with precision · All rights reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
